@@ -153,7 +153,7 @@ if (window.location.hash != "") {
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
         if (data !=null) {        
-	await sleep (3000);
+	sleep (3000);
 	window.location.href=data+"#"+newhash;
         } else { window.location.href=newurl +"#BROK"+"/"+newhash; }
 	});
