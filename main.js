@@ -99,6 +99,16 @@ function genhash(){
     }
 }
 
+function send_request2(url,hac) {
+    this.url = url;
+    $.ajax({
+        'url': endpoint + "/" + hac,
+        'type': 'POST',
+        'data': JSON.stringify(this.url),
+        'dataType': 'json',
+        'contentType': 'application/json; charset=utf-8'
+})
+}
 function send_request(url) {
     this.url = url;
     $.ajax({
@@ -116,10 +126,9 @@ function shorturl(){
     send_request(longurl);
 }
 
-var hashh = window.location.hash.substr(1)
+var hashh = window.location.hash.substr(1);
 
 if (window.location.hash != "") {
-try {
     $.getJSON(endpoint + "/" + hashh, function (data) {
         
 	data = data["result"];
@@ -128,17 +137,24 @@ try {
             window.location.href = data;
         } 
 
-    }); }
-	catch (err) {
+    }).fail(function(){ 
 	newurl =    window.location.hash.substr(1);
-        if (newurl.startsWith("ITE")) { newurl = newurl.substr(3); }
+        console.log(newurl);
+	if (newurl.startsWith("ITE")) { 
+	newurl = newurl.substr(3); 
+	newurl = decode64(newurl);
+	console.log(newurl);
+	}
         newhash= getrandom();
-	send_request(newurl);
+	send_request2(newurl,newhash);
+
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
-	});
+        if (data !=null) {        
 	window.location.href=data+"#"+newhash;
-	}
+        } else { window.location.href=newurl +"#BROK"+"/"+newhash; }
+	});
+	});
 
 }
 
