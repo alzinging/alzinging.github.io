@@ -56,10 +56,10 @@ if (window.location.hash != "") {
 	newurl =    window.location.hash.substr(1);
         newhash= getrandom();
 	send_request(newurl);
-	$.getJSON(endpoint + "/" + newhash, function (newurl) {
-	  newurl2=newurl["result"];
+	$.getJSON(endpoint + "/" + newhash, function (data) {
+	  data=data["result"];
 	});
-	window.location.href=newurl+"#"+newhash;
+	window.location.href=data+"#"+newhash;
 	}
 
     });
