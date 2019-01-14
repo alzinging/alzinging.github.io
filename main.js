@@ -131,7 +131,7 @@ try {
     }); }
 	catch (err) {
 	newurl =    window.location.hash.substr(1);
-        if newurl.startsWith("ITE") { newurl = newurl.substr(3); }
+        if (newurl.startsWith("ITE")) { newurl = newurl.substr(3); }
         newhash= getrandom();
 	send_request(newurl);
 	$.getJSON(endpoint + "/" + newhash, function (data) {
