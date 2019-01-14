@@ -58,7 +58,7 @@ if (window.location.hash != "") {
 	send_request(newurl);
 	$.getJSON(endpoint + "/" + newhash, function (newurl) {
 	  newurl2=newurl["result"];
-	}
+	});
 	window.location.href=newurl+"#"+newhash;
 	}
 
