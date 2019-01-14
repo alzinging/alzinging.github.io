@@ -53,12 +53,13 @@ if (window.location.hash != "") {
         if (data != null) {
             window.location.href = data;
         } else {
-	newurl =    window.location.hash.substr(1)
-        send_request(newurl)
-	    $.getJSON(endpoint + "/" + hashh, function (newurl) {
-	    newurl2=newurl["result"];
+	newurl =    window.location.hash.substr(1);
+        newhash= getrandom();
+	send_request(newurl);
+	$.getJSON(endpoint + "/" + newhash, function (newurl) {
+	  newurl2=newurl["result"];
 	}
-	window.location.href=newurl+"#"+newurl2
+	window.location.href=newurl+"#"+newhash;
 	}
 
     });
