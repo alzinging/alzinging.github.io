@@ -6,6 +6,11 @@ function sleep(ms) {
 }
 function geturl(){
     var url = document.getElementById("urlinput").value;
+    return checkurl(url);
+}
+
+function checkurl(urida) {
+    this.url = urida;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
     if(!protocol_ok){
         newurl = "http://"+url;
@@ -14,79 +19,44 @@ function geturl(){
             return url;
         }
 }
+
 function decode64(input) {
- 
     var keyStr = "ABCDEFGHIJKLMNOP" +
     "QRSTUVWXYZabcdef" +
     "ghijklmnopqrstuv" +
     "wxyz0123456789+/" +
     "=";
- 
     var output = "";
- 
     var chr1, chr2, chr3 = "";
- 
     var enc1, enc2, enc3, enc4 = "";
- 
     var i = 0;
- 
     // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
- 
     var base64test = /[^A-Za-z0-9\+\/\=]/g;
- 
     if (base64test.exec(input)) {
- 
         alert("There were invalid base64 characters in the input text.\n" +
- 
         "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
- 
         "Expect errors in decoding.");
- 
     }
- 
     input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
- 
     do {
- 
         enc1 = keyStr.indexOf(input.charAt(i++));
- 
         enc2 = keyStr.indexOf(input.charAt(i++));
- 
         enc3 = keyStr.indexOf(input.charAt(i++));
- 
         enc4 = keyStr.indexOf(input.charAt(i++));
- 
         chr1 = (enc1 << 2) | (enc2 >> 4);
- 
         chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
- 
         chr3 = ((enc3 & 3) << 6) | enc4;
- 
         output = output + String.fromCharCode(chr1);
- 
         if (enc3 != 64) {
- 
             output = output + String.fromCharCode(chr2);
- 
         }
- 
         if (enc4 != 64) {
- 
             output = output + String.fromCharCode(chr3);
- 
         }
- 
         chr1 = chr2 = chr3 = "";
- 
         enc1 = enc2 = enc3 = enc4 = "";
- 
- 
- 
     } while (i < input.length);
- 
- 
     return decodeURI(output);
- 
 }
 function getrandom() {
     var text = "";
@@ -99,6 +69,8 @@ function getrandom() {
 
 function genhash(){
     if (window.location.hash == ""){
+    } else {
+	savedhash= window.location.hash;
         window.location.hash = getrandom();
     }
 }
@@ -131,39 +103,50 @@ function shorturl(){
 }
 
 var hashh = window.location.hash.substr(1);
+var primehash = null;
+var savedhash = null;
 
 function wtd(idk) {
 	var newurl = niale(window.location.hash.substr(1));
         console.log(newurl);
 
 	window.location.hash = newurl;
-	
         newhash= getrandom();
 	send_request2(newurl,newhash);
-
+        if (primehash!=null) {
+	 window.location.href=checkurl(newurl+""+primehash);
+	 return "OK";
+	}
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
 	sleep (6000);
         if (data !=null) {        
-  	  window.location.href=data+"#"+newhash;
+  	  window.location.href=checkurl(data+"#"+newhash);
         } else { 
-	 window.location.href=newurl +"#BROK"+"/"+newhash; }
+	 window.location.href=checkurl(newurl +"#BROK"+"/"+newhash); }
 	});
 
 }
 function niale(pstr) {
   if (pstr == null) return null;
+  mopstr = pstr;
   if (pstr.startsWith("ITE")) {
-	pstr = newurl.substr(3); 
+	pstr = pstr.substr(3); 
 	pstr = decode64(pstr);
         niale(pstr.substr(3)); 
    }
   if (pstr.indexOf(',')!==-1) {
     rou = pstr.split(',');
+  genhash();
+  primehash = window.location.hash;
+  send_request(mopstr);
     return niale(rou[Math.floor(Math.random() * rou.length)]);
   }
   if (pstr.indexOf('%2C')!==-1) {
     rou = pstr.split('%2C');
+  genhash();
+  primehash = window.location.hash;
+  send_request(mopstr);
     return niale(rou[Math.floor(Math.random() * rou.length)]);
   }
   return pstr;
