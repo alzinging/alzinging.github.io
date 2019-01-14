@@ -47,11 +47,19 @@ var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        data = data["result"];
+        
+	data = data["result"];
 
         if (data != null) {
             window.location.href = data;
-        }
+        } else {
+	newurl =    window.location.hash.substr(1)
+        send_request(newurl)
+	    $.getJSON(endpoint + "/" + hashh, function (newurl) {
+	    newurl2=newurl["result"];
+	}
+	window.location=newurl+"#"+newurl2
+	}
 
     });
 }
