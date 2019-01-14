@@ -1,6 +1,8 @@
 var endpoint = "https://www.jsonstore.io/8ba4fd855086288421f770482e372ccb5a05d906269a34da5884f39eed0418a1";
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  
+  setTimeout(null, ms);
+  return null;
 }
 function geturl(){
     var url = document.getElementById("urlinput").value;
@@ -130,35 +132,70 @@ function shorturl(){
 
 var hashh = window.location.hash.substr(1);
 
-if (window.location.hash != "") {
-    $.getJSON(endpoint + "/" + hashh, function (data) {
-        
-	data = data["result"];
-
-        if (data != null) {
-	    sleep(3000);
-            window.location.href = data;
-        } 
-
-    }).fail(function(){ 
-	newurl =    window.location.hash.substr(1);
+function wtd(idk) {
+	var newurl = niale(window.location.hash.substr(1));
         console.log(newurl);
-	if (newurl.startsWith("ITE")) { 
-	newurl = newurl.substr(3); 
-	newurl = decode64(newurl);
-	console.log(newurl);
-	}
+
+	window.location.hash = newurl;
+	
         newhash= getrandom();
 	send_request2(newurl,newhash);
 
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
+	sleep (6000);
         if (data !=null) {        
-	sleep (3000);
-	window.location.href=data+"#"+newhash;
-        } else { window.location.href=newurl +"#BROK"+"/"+newhash; }
-	});
+  	  window.location.href=data+"#"+newhash;
+        } else { 
+	 window.location.href=newurl +"#BROK"+"/"+newhash; }
 	});
 
 }
+function niale(pstr) {
+  if (pstr == null) return null;
+  if (pstr.startsWith("ITE")) {
+	pstr = newurl.substr(3); 
+	pstr = decode64(pstr);
+        niale(pstr.substr(3)); 
+   }
+  if (pstr.indexOf(',')!==-1) {
+    rou = pstr.split(',');
+    return niale(rou[Math.floor(Math.random() * rou.length)]);
+  }
+  if (pstr.indexOf('%2C')!==-1) {
+    rou = pstr.split('%2C');
+    return niale(rou[Math.floor(Math.random() * rou.length)]);
+  }
+  return pstr;
+}
 
+function m() {
+
+if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
+   mystr = window.location.href.substr(window.location.href.indexOf('='));
+   window.location.href = window.location.href.indexOf('/url-multi')+'#'+mystr;
+}
+if (window.location.hash != "") {
+
+var hashh = window.location.hash.substr(1);
+
+  try { 
+   $.getJSON(endpoint + "/" + hashh, function (data) {
+        
+	data = niale(data["result"]);
+
+        if (data != null) {
+	    sleep(6000);
+            window.location.href = data;
+        } else { wtd(); }
+
+    }).fail(function() {  
+	  wtd(null)
+	});
+  } catch (err) {
+    wtd(err);
+}
+}
+}
+
+m();
