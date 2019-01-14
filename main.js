@@ -172,7 +172,7 @@ function niale(pstr) {
 function m() {
 
 if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
-   mystr = window.location.href.substr(window.location.href.indexOf('='));
+   mystr = window.location.href.substr(window.location.href.indexOf('=')-1);
    window.location.href = window.location.href.indexOf('/url-multi')+'#'+mystr;
 }
 if (window.location.hash != "") {
