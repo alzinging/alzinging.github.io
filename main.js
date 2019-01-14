@@ -1,5 +1,7 @@
 var endpoint = "https://www.jsonstore.io/8ba4fd855086288421f770482e372ccb5a05d906269a34da5884f39eed0418a1";
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
@@ -151,6 +153,7 @@ if (window.location.hash != "") {
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
         if (data !=null) {        
+	await sleep (3000);
 	window.location.href=data+"#"+newhash;
         } else { window.location.href=newurl +"#BROK"+"/"+newhash; }
 	});
