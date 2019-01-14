@@ -46,13 +46,17 @@ function shorturl(){
 var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
+try {
     $.getJSON(endpoint + "/" + hashh, function (data) {
         
 	data = data["result"];
 
         if (data != null) {
             window.location.href = data;
-        } else {
+        } 
+
+    }); }
+	catch (err) {
 	newurl =    window.location.hash.substr(1);
         newhash= getrandom();
 	send_request(newurl);
@@ -62,6 +66,5 @@ if (window.location.hash != "") {
 	window.location.href=data+"#"+newhash;
 	}
 
-    });
 }
 
