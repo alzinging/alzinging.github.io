@@ -1,16 +1,12 @@
 var endpoint = "https://www.jsonstore.io/8ba4fd855086288421f770482e372ccb5a05d906269a34da5884f39eed0418a1";
-function sleep(ms) {
-  
-  setTimeout(null, ms);
-  return null;
-}
 function geturl(){
     var url = document.getElementById("urlinput").value;
     return checkurl(url);
 }
 
+
 function checkurl(urida) {
-    this.url = urida;
+    url = urida;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
     if(!protocol_ok){
         newurl = "http://"+url;
@@ -69,6 +65,7 @@ function getrandom() {
 
 function genhash(){
     if (window.location.hash == ""){
+        window.location.hash = getrandom();
     } else {
 	savedhash= window.location.hash;
         window.location.hash = getrandom();
@@ -90,6 +87,8 @@ function send_request(url) {
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
+//        'date': new Date(),
+//        'srcurl': window.location.href(substr,1,window.location.indexOf("#")),
         'data': JSON.stringify(this.url),
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
@@ -100,6 +99,12 @@ function shorturl(){
     var longurl = geturl();
     genhash();
     send_request(longurl);
+    displuk();
+    
+}
+
+function displuk(){
+   document.getElementById("op").innerHTML = window.location.href;
 }
 
 var hashh = window.location.hash.substr(1);
@@ -112,18 +117,17 @@ function wtd(idk) {
 
 	window.location.hash = newurl;
         newhash= getrandom();
-	send_request2(newurl,newhash);
+	//send_request2(newurl,newhash);
         if (primehash!=null) {
 	 window.location.href=checkurl(newurl+""+primehash);
 	 return "OK";
 	}
 	$.getJSON(endpoint + "/" + newhash, function (data) {
 	  data=data["result"];
-	sleep (6000);
         if (data !=null) {        
   	  window.location.href=checkurl(data+"#"+newhash);
         } else { 
-	 window.location.href=checkurl(newurl +"#BROK"+"/"+newhash); }
+	 window.location.href=checkurl(newurl +"#"+newhash); }
 	});
 
 }
@@ -137,13 +141,6 @@ function niale(pstr) {
    }
   if (pstr.indexOf(',')!==-1) {
     rou = pstr.split(',');
-  genhash();
-  primehash = window.location.hash;
-  send_request(mopstr);
-    return niale(rou[Math.floor(Math.random() * rou.length)]);
-  }
-  if (pstr.indexOf('%2C')!==-1) {
-    rou = pstr.split('%2C');
   genhash();
   primehash = window.location.hash;
   send_request(mopstr);
@@ -168,7 +165,6 @@ var hashh = window.location.hash.substr(1);
 	data = niale(data["result"]);
 
         if (data != null) {
-	    sleep(6000);
             window.location.href = data;
         } else { wtd(); }
 
