@@ -154,10 +154,37 @@ function m() {
 
 if (window.location.hash.substr(1)=='fwfbx') {
  window.location.href='http://douci.ml/SAYFREED.html';
+ return;
 }
 if (window.location.hash.substr(1)=='SIYae') {
  window.location.href='http://douci.ml/B2BIONIC.html';
+ return;
 }
+if (window.location.hash.substr(1)=='d0ny4') {
+ window.location.href='http://douci.ml/CRYAMELYON.html';
+ return;
+}
+if (window.location.hash.substr(1)=='wVwpn') {
+ window.location.href='http://douci.ml/CRYAMELYON.html';
+ return;
+}
+if (window.location.hash.substr(1)=='SHN2U') {
+ window.location.href='http://douci.ml/CHALK.html';
+ return;
+}
+if (window.location.hash.substr(1)=='fWFbx') {
+ window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
+ return;
+}
+if (window.location.hash.substr(1)=='5bBM3') {
+ window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
+ return;
+}
+if (window.location.hash.substr(1)=='qt5hl') {
+ window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
+ return;
+}
+
 
 if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
    mystr = window.location.href.substr(window.location.href.indexOf('=')-1);
