@@ -188,6 +188,10 @@ if (window.location.hash.substr(1)=='nxX6V') {
  window.location.href='http://archive.li/w9PPO';
  return;
 }
+if (window.location.hash.substr(1)=='Y2GYw') {
+ window.location.href='http://archive.li/w9PPO';
+ return;
+}
 
 
 if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
