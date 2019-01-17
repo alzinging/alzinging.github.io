@@ -184,6 +184,10 @@ if (window.location.hash.substr(1)=='qt5hl') {
  window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
  return;
 }
+if (window.location.hash.substr(1)=='nxX6V') {
+ window.location.href='http://archive.li/w9PPO';
+ return;
+}
 
 
 if (window.location.href.indexOf('url-multi-redirect/?a=')!==-1) {
