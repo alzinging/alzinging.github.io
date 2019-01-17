@@ -184,8 +184,8 @@ if (window.location.hash.substr(1)=='qt5hl') {
  window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
  return;
 }
-if (window.location.hash.substr(1)=='nxX6V') {
- window.location.href='http://archive.li/w9PPO';
+if (window.location.hash.substr(1)=='ifello') {
+ window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/eiffel%7Csort:date';
  return;
 }
 if (window.location.hash.substr(1)=='antid') {
