@@ -184,11 +184,23 @@ if (window.location.hash.substr(1)=='utnik') {
  window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/sputnik%7Csort:date/ymene/hmgztR7tCO0/1AaTm11yBgAJ';
  return;
 }
+if (window.location.hash.substr(1)=='UTNIK') {
+ window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/sputnik%7Csort:date/ymene/hmgztR7tCO0/1AaTm11yBgAJ';
+ return;
+}
 if (window.location.hash.substr(1)=='qt5hl') {
  window.location.href='https://www.reddit.com/r/conspiracy/comments/ag1mw1/living_in_a_virtual_nightmare_nothing_more_than/';
  return;
 }
 if (window.location.hash.substr(1)=='ifello') {
+ window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/eiffel%7Csort:date';
+ return;
+}
+if (window.location.hash.substr(1)=='ifello') {
+ window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/eiffel%7Csort:date';
+ return;
+}
+if (window.location.hash.substr(1)=='IFELL') {
  window.location.href='https://groups.google.com/a/fromthemachine.org/forum/#!searchin/ymene/eiffel%7Csort:date';
  return;
 }
