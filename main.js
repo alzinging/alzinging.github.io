@@ -188,8 +188,8 @@ if (window.location.hash.substr(1)=='nxX6V') {
  window.location.href='http://archive.li/w9PPO';
  return;
 }
-if (window.location.hash.substr(1)=='Y2GYw') {
- window.location.href='http://archive.li/w9PPO';
+if (window.location.hash.substr(1)=='antid') {
+ window.location.href='https://groups.google.com/a/lamc.la/forum/#!topic/car/HqrqSFfJfts';
  return;
 }
 
